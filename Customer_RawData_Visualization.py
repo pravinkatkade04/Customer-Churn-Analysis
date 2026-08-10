@@ -76,6 +76,36 @@ print(
     df["InternetService"].unique() ,
        "\n \n " , 
        "Total Null Number in the InternetService Colu " , 
-       df["InternetService"].isnull().sum()
+       df["InternetService"].isnull().sum()     
     )
+print("\n \n ")
 
+
+
+#Payment Method
+
+print(df["PaymentMethod"].info())
+print("\n Null Number in the PaymentMethod Column :  ",df["PaymentMethod"].isnull().sum())
+print("\n all Unique Values :  " ,df["PaymentMethod"].unique())
+df["PaymentMethod"] = df["PaymentMethod"].str.capitalize()
+df["PaymentMethod"] = df["PaymentMethod"].fillna(df["PaymentMethod"].mode().iloc[0])  #Remainmber to add .iloc[] method
+
+print(df["PaymentMethod"].unique())
+print("\n \n ")
+
+
+#Total Charges
+
+print(df["TotalCharges"].describe())
+df["TotalCharges"] = np.where((df["TotalCharges"]>=100) & (df["TotalCharges"]<=50000) ,  #If possible to use the & instead of or
+    df["TotalCharges"] , 
+    df["TotalCharges"].mean()
+) 
+print(df["TotalCharges"].isnull().sum())
+
+
+#Churn Column 
+print("\n \n How many unique Value hav in the churn :-  ")
+print(df["Churn"].unique())
+print(df["Churn"].isnull().sum())
+print("Churn Aleady Perfect Clean \n \n ")
