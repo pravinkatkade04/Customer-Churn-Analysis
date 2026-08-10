@@ -68,6 +68,7 @@ print(df["MonthlyCharges"].isnull().sum())
 
 
 
+
 print(df["InternetService"].unique())
 df["InternetService"] = df["InternetService"].str.capitalize()
 df["InternetService"] = df["InternetService"].fillna(df["InternetService"].mode().iloc[0])
@@ -109,3 +110,15 @@ print("\n \n How many unique Value hav in the churn :-  ")
 print(df["Churn"].unique())
 print(df["Churn"].isnull().sum())
 print("Churn Aleady Perfect Clean \n \n ")
+
+
+#save file
+df.to_csv("Customer_Churn_Cleaned.csv",index=False)
+
+print("File Saved Successfully")
+print("\n \n ")
+print(df.info())
+
+print(df["MonthlyCharges"].describe())
+
+
