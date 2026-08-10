@@ -34,6 +34,7 @@ print(" \n  Again We try To Check :- ",df["Tenure"].describe() , "\n ")
 print("\n ",df["Tenure"].info())
 print("Here Done Tenure Col \n\n ")
 
+
 #Gender Column 
 print(df["Gender"].isnull().sum())
 print(df["Gender"].unique())
@@ -54,5 +55,27 @@ print("After Cleaning the Data :- " , df["Contract"].unique())
 print("\n \n")
 
 
-
 #MonthlyCharges Column
+
+print(df["MonthlyCharges"].describe())
+
+df["MonthlyCharges"] = np.where((df["MonthlyCharges"]>2000)| (df["MonthlyCharges"]<0) , np.nan , df["MonthlyCharges"])
+df["MonthlyCharges"] = df["MonthlyCharges"].fillna(df["MonthlyCharges"].mode().iloc[0] ) 
+df["MonthlyCharges"]= df["MonthlyCharges"].round(2)
+
+print(df["MonthlyCharges"].describe().round(2))
+print(df["MonthlyCharges"].isnull().sum())
+
+
+
+print(df["InternetService"].unique())
+df["InternetService"] = df["InternetService"].str.capitalize()
+df["InternetService"] = df["InternetService"].fillna(df["InternetService"].mode().iloc[0])
+
+print(
+    df["InternetService"].unique() ,
+       "\n \n " , 
+       "Total Null Number in the InternetService Colu " , 
+       df["InternetService"].isnull().sum()
+    )
+
