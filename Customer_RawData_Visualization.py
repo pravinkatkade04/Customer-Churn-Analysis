@@ -121,6 +121,16 @@ print(df["Churn"].unique())
 print(df["Churn"].isnull().sum())
 print("Churn Aleady Perfect Clean \n \n ")
 
+total_churn = len(df)
+cal_churn = (df["Churn"]=="Yes").sum()
+
+churn_rate =  np.round(
+    (cal_churn/total_churn)*100, 2 
+    )
+print("Total Length of Dataframe : - " , total_churn)
+print("Sum Of Churn == Yes : - ", cal_churn)
+print("Churn Rate : - " , churn_rate ,"%")
+
 
 #save file
 df.to_csv("Customer_Churn_Cleaned.csv",index=False)
@@ -144,4 +154,7 @@ print("Number of Duplicate Values :  " ,df.duplicated().sum())
 print("\n")
 print("Number Of Null Values : " ,  df.isnull().sum())
 print("\n")
+
+
+
 
