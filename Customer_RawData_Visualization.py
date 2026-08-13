@@ -131,6 +131,19 @@ print("Total Length of Dataframe : - " , total_churn)
 print("Sum Of Churn == Yes : - ", cal_churn)
 print("Churn Rate : - " , churn_rate ,"%")
 
+print("\n  Create A table that shows the Relation between Churn and Gender " )
+print("It Helps To identify Number of Gender Of Customers that have done churn ")
+
+Relate_table =np.round(
+        pd.crosstab(
+            df["Gender"],
+            df["Churn"],
+            normalize="index"
+        )* 100 
+,2)
+
+print("\n The Relationship table Between Gender & Churn : " , Relate_table)
+
 
 #save file
 df.to_csv("Customer_Churn_Cleaned.csv",index=False)
