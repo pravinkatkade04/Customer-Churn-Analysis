@@ -12,7 +12,7 @@ print(" \n Total Number of Rows :- " , len(df) )
 
 print("Age Columns Total Null Values :- ")
 print(df["Age"].isnull().sum())
-print(df["Age"].unique)
+print(df["Age"].unique())
 
 df["Age"] = np.where((df["Age"]>100 )|(df["Age"]<0) , np.nan , df["Age"])
 df["Age"] = df["Age"].fillna(df["Age"].mean())
@@ -29,7 +29,12 @@ print("\n \n")
 
 #Tenure Column
 print(df["Tenure"].describe())
-df["Tenure"] = np.where((df["Tenure"]>75)|(df["Tenure"]<0), df["Tenure"].mode() , df["Tenure"])
+tenure_mode = df["Tenure"].mode().iloc[0]
+
+df["Tenure"] = np.where(
+    (df["Tenure"]>75)|(df["Tenure"]<0),
+    df["Tenure"].mode() , df["Tenure"]
+)
 print(" \n  Again We try To Check :- ",df["Tenure"].describe() , "\n ")
 print("\n ",df["Tenure"].info())
 print("Here Done Tenure Col \n\n ")
