@@ -101,13 +101,18 @@ print("\n \n ")
 
 
 #Total Charges
+df["TotalCharges"] = pd.to_numeric(
+    df["TotalCharges"] , errors="coerce"
+)
+print("Checking The Null Number ")
+print(df["TotalCharges"].isnull().sum())
 
 print(df["TotalCharges"].describe())
 df["TotalCharges"] = np.where((df["TotalCharges"]>=100) & (df["TotalCharges"]<=50000) ,  #If possible to use the & instead of or
     df["TotalCharges"] , 
-    df["TotalCharges"].mean()
+    df["TotalCharges"].median()
 ) 
-print(df["TotalCharges"].isnull().sum())
+
 
 
 #Churn Column 
@@ -122,8 +127,21 @@ df.to_csv("Customer_Churn_Cleaned.csv",index=False)
 
 print("File Saved Successfully")
 print("\n \n ")
-print(df.info())
 
-print(df["MonthlyCharges"].describe())
 
+
+
+
+#Exploratory Data Analysiz
+
+print("Information about Dataframe :  " , df.info())
+print("\n")
+print("all Description :  ", df.describe())
+print("\n")
+print("Shape of Dataframe :  "  , df.shape)
+print('\n')
+print("Number of Duplicate Values :  " ,df.duplicated().sum())
+print("\n")
+print("Number Of Null Values : " ,  df.isnull().sum())
+print("\n")
 
