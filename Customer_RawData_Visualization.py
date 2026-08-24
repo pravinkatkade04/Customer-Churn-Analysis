@@ -9,7 +9,7 @@ df = df.drop_duplicates()
 df . info()
 
 print(" \n Total Number of Rows :- " , len(df) )
-
+print("\n")
 print("Age Columns Total Null Values :- ")
 print(df["Age"].isnull().sum())
 print(df["Age"].unique())
