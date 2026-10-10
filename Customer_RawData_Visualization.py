@@ -21,9 +21,9 @@ df["Age"] = df["Age"].astype(int)
 
 print("Age Columns Total Null Values :- ")
 print(df["Age"].isnull().sum())
-print(df["Age"].dtype)
+print(df["Age"].dtype , "\n")
 
-print("\n \n")
+print("\n ")
 
 
 
